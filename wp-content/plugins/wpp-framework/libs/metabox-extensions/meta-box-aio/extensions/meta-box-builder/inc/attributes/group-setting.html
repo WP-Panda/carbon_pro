@@ -1,0 +1,52 @@
+<div class="description description-wide">
+	<label>
+		<input type="checkbox" ng-model="field.collapsible" class="ng-valid ng-dirty ng-valid-parse ng-touched">
+		Collapsible
+	</label>
+</div>
+
+<div ng-show="field.collapsible" class="meta-box-group-field">
+	<div class="description description-thin">
+		<label>
+			<input class="ng-valid ng-dirty ng-valid-parse ng-touched" type="checkbox" ng-model="field.save_state" ng-true-value="'true'" ng-false-value="'false'">
+			Save the collapse/expand state
+		</label>
+	</div>
+	<div class="description description-thin select-group-title">
+		<ul class="builder-grid">
+			<li class="builder-col"><label>Default state</label></li>
+			<li class="builder-col">
+				<label><input type="radio" name="default-state[]" ng-model="field.default_state" value="expanded">Expanded</label>
+			</li>
+			<li class="builder-col">
+				<label><input type="radio" name="default-state[]" ng-model="field.default_state" value="collapsed">Collapsed</label>
+			</li>
+		</ul>
+	</div>
+
+	<div class="description description-thin select-group-title meta-box-group-field">
+		<ul class="builder-grid">
+			<li class="builder-col"><label>Group title</label></li>
+			<li class="builder-col">
+				<label><input type="radio" name="groupfield[]" ng-model="field.groupfield" value="text">Text</label>
+			</li>
+			<li class="builder-col">
+				<label><input data-id="{{field.id}}" class="meta-box-group-field__check" type="radio" name="groupfield[]" ng-model="field.groupfield" value="subfield">Sub-field value</label>
+			</li>
+		</ul>
+	</div>
+	<div class="description description-thin select-group-title">
+		<div ng-switch="field.groupfield" class="switch-group">
+			<div ng-switch-when="text">
+				<label>Group title text <span class="tooltip"><span class="dashicons dashicons-editor-help"></span><b title="Enter group title text. Use {#} to specify the index"></b></span></label>
+			    <input type="text" ng-model="field.group_title" ng-model="Title text">
+			</div>
+			<div ng-switch-when="subfield">
+				<label>Select sub-field</label>
+			    <select id="select-group-title" ng-model="field.group_title" multiple>
+					<option ng-repeat="option in group_subfield" ng-value="option">{{option}}</option>
+			    </select>
+			</div>
+		</div>
+	</div>
+</div>

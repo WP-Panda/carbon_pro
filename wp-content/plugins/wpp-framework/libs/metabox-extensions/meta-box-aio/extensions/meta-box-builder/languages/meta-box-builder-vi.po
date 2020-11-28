@@ -1,0 +1,463 @@
+# <!=Copyright (C) 2014 Rilwis
+# This file is distributed under the GPL2+.=!>
+msgid ""
+msgstr ""
+"Project-Id-Version: Meta Box Builder 2.0.7\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/meta-box\n"
+"POT-Creation-Date: 2018-10-04 15:42+0700\n"
+"PO-Revision-Date: 2018-10-04 15:52+0700\n"
+"Last-Translator: \n"
+"Language-Team: Meta Box <admin@metabox.io>\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-KeywordsList: __;_x;_e;_ex;_n;_nx;esc_attr__;esc_attr_e;esc_attr_x;"
+"esc_html__;esc_html_e;esc_html_x;_n_noop;_nx_noop\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: lang\n"
+"X-Poedit-SearchPathExcluded-1: assets\n"
+
+#: inc/class-meta-box-builder.php:177 inc/class-meta-box-builder.php:180
+#: inc/class-meta-box-builder.php:183 inc/class-meta-box-builder.php:184
+msgid "Field group updated."
+msgstr "Đã cập nhật."
+
+#: inc/class-meta-box-builder.php:178
+msgid "Custom field updated."
+msgstr "Trường tùy biến đã cập nhật."
+
+#: inc/class-meta-box-builder.php:179
+msgid "Custom field deleted."
+msgstr "Trường tùy biến đã xóa."
+
+#: inc/class-meta-box-builder.php:182
+#, php-format
+msgid "Field group restored to revision from %s"
+msgstr "Đã được khôi phục từ bản sao lưu %s"
+
+#: inc/class-meta-box-builder.php:185
+msgid "Field group submitted."
+msgstr "Đã cập nhật."
+
+#: inc/class-meta-box-builder.php:296
+msgid "Field Groups"
+msgstr "Nhóm trường tùy biến"
+
+#: inc/class-meta-box-builder.php:297
+msgid "Field Group"
+msgstr "Nhóm trường tùy biến"
+
+#: inc/class-meta-box-builder.php:298 inc/class-meta-box-builder.php:299
+#: inc/class-meta-box-builder.php:305
+msgid "Custom Fields"
+msgstr "Các trường"
+
+#: inc/class-meta-box-builder.php:300
+msgid "Add New"
+msgstr "Thêm mới"
+
+#: inc/class-meta-box-builder.php:301
+msgid "Add New Field Group"
+msgstr "Thêm mới"
+
+#: inc/class-meta-box-builder.php:302
+msgid "New Field Group"
+msgstr "Thêm mới"
+
+#: inc/class-meta-box-builder.php:303
+msgid "Edit Field Group"
+msgstr "Sửa các trường tùy biến"
+
+#: inc/class-meta-box-builder.php:304
+msgid "View Field Group"
+msgstr "Xem các trường tùy biến"
+
+#: inc/class-meta-box-builder.php:306
+msgid "Search Field Groups"
+msgstr "Tìm kiếm"
+
+#: inc/class-meta-box-builder.php:307
+msgid "Parent Field Groups:"
+msgstr "Nhóm cha:"
+
+#: inc/class-meta-box-builder.php:308
+msgid "No field groups found."
+msgstr "Không tìm thấy kết quả nào."
+
+#: inc/class-meta-box-builder.php:309
+msgid "No field groups found in Trash."
+msgstr "Không tìm thấy kết quả nào trong thùng rác."
+
+#: inc/class-meta-box-import.php:12
+msgid "Import"
+msgstr "Nhập"
+
+#: inc/class-meta-box-import.php:43
+msgid "Import Field Groups"
+msgstr "Nhập"
+
+#: inc/class-meta-box-import.php:46
+msgid "Tigh tigh tigh! Field groups has imported successfully!"
+msgstr "Đã nhập dữ liệu thành công!"
+
+#: inc/class-meta-box-import.php:49
+msgid ""
+"Choose a <code>.dat</code> file to upload, then click <strong>Upload file "
+"and import.</strong>"
+msgstr ""
+"Chọn file <code>.dat</code>để upload, sau đó click nút <strong>Tải lên và "
+"nhập</strong>"
+
+#: inc/class-meta-box-import.php:53
+msgid "Choose a file from your computer:"
+msgstr "Chọn 1 file từ máy tính của bạn:"
+
+#: inc/class-meta-box-import.php:58
+msgid "Upload file and import"
+msgstr "Tải lên và nhập"
+
+#: inc/components/tabs.php:8 inc/components/tabs.php:13 inc/fields-gui.php:81
+msgid "Fields"
+msgstr "Các trường"
+
+#: inc/components/tabs.php:9 inc/components/tabs.php:14
+msgid "Settings"
+msgstr "Thiết lập"
+
+#: inc/components/tabs.php:19
+msgid "Code"
+msgstr "Mã"
+
+#: inc/fields-gui.php:12
+msgid "Enter field type here"
+msgstr "Nhập tên tại đây"
+
+#: inc/fields-gui.php:32
+msgid "Press return or enter to expand"
+msgstr "Bấm Enter để mở rộng"
+
+#: inc/fields-gui.php:58
+msgid "Title"
+msgstr "Tiêu đề"
+
+#: inc/fields-gui.php:59
+msgid "Enter name here"
+msgstr "Nhập tên tại đây"
+
+#: inc/fields-gui.php:62
+msgid "ID"
+msgstr "ID"
+
+#: inc/fields-gui.php:68 inc/fields-gui.php:139
+msgid "Switch to Draft"
+msgstr "Chuyển sang dự thảo"
+
+#: inc/fields-gui.php:69 inc/fields-gui.php:140
+msgid "Update"
+msgstr "Cập nhật"
+
+#: inc/fields-gui.php:71 inc/fields-gui.php:142
+msgid "Save Draft"
+msgstr "Lưu nháp"
+
+#: inc/fields-gui.php:72 inc/fields-gui.php:143
+msgid "Publish"
+msgstr "Đăng"
+
+#: inc/fields-gui.php:83
+msgid ""
+"No fields. Click the field buttons on the left true create your first field."
+msgstr ""
+"Không có trường nào cả. Nhấn vào các nút ở bên trái để tạo trường đầu tiên."
+
+#: inc/fields-gui.php:86
+msgid ""
+"Drag each item into the order you prefer. Click the arrow on the right of "
+"the item to reveal additional configuration options."
+msgstr ""
+"Kéo từng mục đến vị trí bạn mong muốn. Bấm vào biểu tượng mũi tên bên phải "
+"mỗi mục để xem các lựa chọn tùy chỉnh khác."
+
+#: inc/fields-gui.php:103
+msgid "Edit"
+msgstr "Sửa"
+
+#: inc/fields-gui.php:111
+msgid "Remove"
+msgstr "Xóa"
+
+#: inc/fields-gui.php:113
+msgid "Cancel"
+msgstr "Hủy"
+
+#: inc/fields-gui.php:114
+msgid "Duplicate"
+msgstr "Nhân bản"
+
+#: inc/fields-gui.php:120
+msgid "Drag and drop child fields here."
+msgstr "Kéo và thả các trường con ở đây."
+
+#: inc/fields-gui.php:134
+msgid "Move to Trash"
+msgstr "Cho vào thùng rác"
+
+#: inc/settings-gui.php:1
+msgid "General"
+msgstr "Tổng quan"
+
+#: inc/settings-gui.php:4
+msgid "Tabs"
+msgstr "Tabs"
+
+#: inc/settings-gui.php:7 inc/settings-gui.php:74
+msgid "Style"
+msgstr "Kiểu"
+
+#: inc/settings-gui.php:9
+msgid "Default"
+msgstr "Mặc định"
+
+#: inc/settings-gui.php:10
+msgid "Box"
+msgstr "Hộp"
+
+#: inc/settings-gui.php:11
+msgid "Left"
+msgstr "Trái"
+
+#: inc/settings-gui.php:15
+msgid "Wrapper"
+msgstr "Bao"
+
+#: inc/settings-gui.php:23
+msgid "Show for"
+msgstr "Hiển thị cho"
+
+#: inc/settings-gui.php:26
+msgid "Posts"
+msgstr "Bài viết"
+
+#: inc/settings-gui.php:27
+msgid "Terms"
+msgstr "Term"
+
+#: inc/settings-gui.php:28 inc/settings-gui.php:107
+msgid "Setting Pages"
+msgstr "Trang cài đặt"
+
+#: inc/settings-gui.php:29
+msgid "Users"
+msgstr "Người dùng"
+
+#: inc/settings-gui.php:30
+msgid "Comments"
+msgstr "Bình luận"
+
+#: inc/settings-gui.php:31
+msgid "Attachments"
+msgstr "File đính kèm"
+
+#: inc/settings-gui.php:36
+msgid "Post types"
+msgstr "Loại bài viết"
+
+#: inc/settings-gui.php:42
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: inc/settings-gui.php:46
+msgid "Position"
+msgstr "Vị trí"
+
+#: inc/settings-gui.php:50
+msgid "Normal (after content)"
+msgstr "Bình thường (sau nội dung)"
+
+#: inc/settings-gui.php:51
+msgid "Advanced (after normal)"
+msgstr "Nâng cao (sau bình thường)"
+
+#: inc/settings-gui.php:52
+msgid "Side"
+msgstr "Bên"
+
+#: inc/settings-gui.php:53
+msgid "Before post title"
+msgstr "Trước tiêu đề"
+
+#: inc/settings-gui.php:54
+msgid "After post title"
+msgstr "Sau tiêu đề"
+
+#: inc/settings-gui.php:55
+msgid "After the post content editor"
+msgstr "Sau trình soạn thảo nội dung"
+
+#: inc/settings-gui.php:56
+msgid "Before permalink"
+msgstr "Trước permalink"
+
+#: inc/settings-gui.php:61
+msgid "Priority"
+msgstr "Độ ưu tiên"
+
+#: inc/settings-gui.php:65
+msgid "High"
+msgstr "Cao"
+
+#: inc/settings-gui.php:68
+msgid "Low"
+msgstr "Thấp"
+
+#: inc/settings-gui.php:77
+msgid "Standard (WordPress meta box)"
+msgstr "Chuẩn (WordPress meta box)"
+
+#: inc/settings-gui.php:78
+msgid "Seamless (no meta box)"
+msgstr "Mượt mà (không có meta box)"
+
+#: inc/settings-gui.php:83
+msgid "Hidden by default."
+msgstr "Mặc định ẩn."
+
+#: inc/settings-gui.php:87
+msgid ""
+"The meta box is hidden by default and requires users to select the "
+"corresponding checkbox in Screen Options to show it"
+msgstr ""
+"Meta box được mặc định ẩn và để hiện lại, người dung phải chọn checkbox "
+"tương ứng trong phần Screen Options"
+
+#: inc/settings-gui.php:92
+msgid "Autosave"
+msgstr "Tự động lưu"
+
+#: inc/settings-gui.php:98
+msgid "Taxonomies"
+msgstr "Taxonomies"
+
+#: inc/settings-gui.php:102 inc/settings-gui.php:111 inc/settings-gui.php:119
+#: inc/settings-gui.php:127 inc/settings-gui.php:142 inc/settings-gui.php:191
+#, php-format
+msgid "Requires %s."
+msgstr "Yêu cầu %s."
+
+#: inc/settings-gui.php:133
+msgid "Show in media modal?"
+msgstr "Hiện trong media modal?"
+
+#: inc/settings-gui.php:140
+msgid "Custom Table"
+msgstr "Bảng dữ liệu tùy chỉnh"
+
+#: inc/settings-gui.php:147
+msgid "Use custom table"
+msgstr "Dùng bảng dữ liệu tùy chỉnh"
+
+#: inc/settings-gui.php:153
+msgid "Table name"
+msgstr "Tên bảng"
+
+#: inc/settings-gui.php:161
+msgid "Custom Attributes"
+msgstr "Thuộc tính tùy chỉnh"
+
+#: inc/settings-gui.php:162
+msgid "See documentation"
+msgstr "Xem tài liệu"
+
+#: inc/settings-gui.php:184
+msgid "+ Attribute"
+msgstr "+ Thuộc tính"
+
+#: inc/settings-gui.php:189
+msgid "Conditional Logic"
+msgstr "Điều kiện logic"
+
+#: inc/settings-gui.php:198
+msgid ""
+"This conditional logic applies to current Meta Box, for fields conditional "
+"logic, please go to each field and set."
+msgstr ""
+"Các điều kiện logic áp dung với meta box. Để đặt điều kiện với các trường, "
+"hãy xem cấu hình của từng trường."
+
+#: inc/settings-gui.php:203
+msgid "Visible"
+msgstr "Hiện"
+
+#: inc/settings-gui.php:204
+msgid "Hidden"
+msgstr "Ẩn"
+
+#: inc/settings-gui.php:207
+msgid "when"
+msgstr "khi"
+
+#: inc/settings-gui.php:210
+msgid "All"
+msgstr "Tất cả"
+
+#: inc/settings-gui.php:211
+msgid "Any"
+msgstr "Một trong số"
+
+#: inc/settings-gui.php:214
+msgid "of these conditions match"
+msgstr "các điều kiện sau thỏa mãn"
+
+#: inc/settings-gui.php:258
+msgid "+ Condition"
+msgstr "+ Điều kiện"
+
+#: inc/settings-gui.php:269
+msgid "Save Changes"
+msgstr "Lưu thay đổi"
+
+#~ msgid "Meta Box Title"
+#~ msgstr "Tiêu đề"
+
+#~ msgid "Save Meta Box"
+#~ msgstr "Lưu"
+
+#~ msgid "Meta Box Fields"
+#~ msgstr "Các trường"
+
+#~ msgid "Add meta box fields from the column on the left."
+#~ msgstr "Thêm các trường từ cột bên trái"
+
+#~ msgid "Context"
+#~ msgstr "Ngữ cảnh"
+
+#~ msgid "Normal"
+#~ msgstr "Bình thường"
+
+#~ msgid "Advanced"
+#~ msgstr "Nâng cao"
+
+#~ msgid "Delete Meta Box"
+#~ msgstr "Xóa"
+
+#~ msgid ""
+#~ "Meta Box Builder requires Meta Box plugin to work. Please install it."
+#~ msgstr ""
+#~ "Meta Box Builder yêu cầu cần có plugin Meta Box. Vui lòng cài đặt plugin "
+#~ "trước khi sử dung."
+
+#~ msgid "New Meta Meta Box"
+#~ msgstr "Thêm mới"
+
+#~ msgid "Edit Meta Box"
+#~ msgstr "Chỉnh sửa"
+
+#~ msgid "View Meta Box"
+#~ msgstr "Xem"
+
+#~ msgid "All Meta Boxes"
+#~ msgstr "Tất cả"

@@ -1,0 +1,10 @@
+.filters {
+	margin-top: 30px;
+}
+.filters p {
+	margin: 0 0 5px;
+}
+.filters a {
+	display: inline-block;
+	margin-right: 10px;
+}

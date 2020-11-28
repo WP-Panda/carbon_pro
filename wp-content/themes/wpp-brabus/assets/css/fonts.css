@@ -1,0 +1,35 @@
+@font-face {
+    font-family: 'DINNextLT-Light';
+    font-weight: normal;
+    font-display: swap;
+    src: url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Light.eot.php?#iefix") format("embedded-opentype"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Light.woff2.php") format("woff2"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Light.woff.php") format("woff");
+}
+
+@font-face {
+    font-family: 'DINNextLT-Regular';
+    font-weight: normal;
+    font-display: swap;
+    src: url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Regular.eot.php?#iefix") format("embedded-opentype"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Regular.woff2.php") format("woff2"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Regular.woff.php") format("woff");
+}
+
+@font-face {
+    font-family: 'DINNextLT-Pro-Medium';
+    font-weight: bold;
+    font-display: swap;
+    src: url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Medium.eot.php?#iefix") format("embedded-opentype"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Medium.woff2.php") format("woff2"), url("/wp-content/themes/wpp-brabus/assets/fonts/DINNextLTPro-Medium.woff.php") format("woff");
+}
+
+@font-face {
+    font-family: 'BRABUSspecs-Light';
+    font-weight: bold;
+    font-display: swap;
+    src: url("/wp-content/themes/wpp-brabus/assets/fonts/BRABUSspecs-Light.eot.php") format("embedded-opentype"), url("/wp-content/themes/wpp-brabus/assets/fonts/BRABUSspecs-Light.woff2.php") format("woff2"), url("/wp-content/themes/wpp-brabus/assets/fonts/BRABUSspecs-Light.woff.php") format("woff");
+}
+
+@font-face {
+    font-family: 'BRABUSIcon-Regular';
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+    src:  url("/wp-content/themes/wpp-brabus/assets/fonts/BRABUSIcon-Regular.woff2.php") format("woff2");
+}

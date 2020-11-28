@@ -1,0 +1,120 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WPP Framework\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-02-26 09:14+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.2.0; wp-5.1"
+
+#: wpp-extention/wpp-bt-modal-login/wpp-bt-modal-login.php:189
+msgid "Email field is Empty"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:29
+msgid "Enter a password"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:30
+msgid "Enter Password"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:54
+msgid ""
+"Hint: The password should be at least twelve characters long. To make it "
+"stronger, use upper and lower case letters, numbers, and symbols\n"
+"                    like ! \" ? $ % ^ & )."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://wp-panda.com/"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wp-panda.com/?wpp-framework"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:17
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:46
+msgid "LOGIN"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:26
+#: wpp-extention/wpp-bt-modal-login/templates/forms/register.php:47
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:39
+msgid "Login"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:37
+#: wpp-extention/wpp-bt-modal-login/templates/forms/register.php:49
+msgid "Lost a password?"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:40
+msgid ""
+"Lost your password? Please enter your username or email address. You will "
+"receive a link to create a new password via email."
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/register.php:16
+#: wpp-extention/wpp-bt-modal-login/templates/forms/register.php:58
+msgid "REGISTER"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:37
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:27
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:40
+msgid "Register"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:16
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:34
+msgid "RESET PASSWORD"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:26
+#: wpp-extention/wpp-bt-modal-login/templates/forms/set.php:48
+msgid "SET PASSWORD"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/wpp-bt-modal-login.php:193
+msgid "To register, you must accept the user agreement"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/wpp-bt-modal-login.php:182
+msgid "User registration is currently not allowed."
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/login.php:21
+msgid "Username or Email"
+msgstr ""
+
+#. Author of the plugin
+msgid "WP Panda"
+msgstr ""
+
+#. Name of the plugin
+msgid "WPP Framework"
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/wpp-bt-modal-login.php:207
+msgid ""
+"You will be able to set your password once you confirm your email address."
+msgstr ""
+
+#: wpp-extention/wpp-bt-modal-login/templates/forms/lost.php:19
+#: wpp-extention/wpp-bt-modal-login/templates/forms/register.php:20
+msgid "Your Email address..."
+msgstr ""
+
+#. Description of the plugin
+msgid "Плагин фреймворк для сборки всякого от WP Panda"
+msgstr ""

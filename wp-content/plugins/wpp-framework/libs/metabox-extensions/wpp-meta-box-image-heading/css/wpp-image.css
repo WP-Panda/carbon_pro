@@ -1,0 +1,12 @@
+/* =Styles for 'heading' field
+-------------------------------------------------------------- */
+.wpp_meta_img_wrap {
+    background-color: #eee;
+    padding: 15px;
+    opacity: 0.5;
+}
+#poststuff .wpp_meta_img_wrap img {
+    max-height: 150px;
+    display: block;
+    margin: 0 auto;
+}

@@ -1,0 +1,52 @@
+<section class="builder-options description description-wide key-value">
+
+	<table class="table" ng-show="active.options.length > 0">
+
+		<thead>
+			<tr>
+				<td>
+					<span ng-hide="field.type == 'text_list'">Value</span>
+					<span ng-show="field.type == 'text_list'">Placeholder</span>
+				</td>
+				<td>
+					<span ng-hide="field.type == 'image_select'">Label</span>
+					<span ng-show="field.type == 'image_select'">Image URL</span>
+				</td>
+				<td ng-hide="field.type == 'text_list'">Selected</td>
+				<td></td>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr ng-repeat="option in active.options">
+
+				<td class="col-xs-6" width="42%">
+					<input ng-keydown="navigate($event, active.id, $index, 'key')" ng-enter="addObject('options')" focus-on="{{active.id}}_key_{{$index}}" type="text" class="form-control input-sm" ng-model="option.key" placeholder="" ng-change="autoFillValue($index)" />
+				</td>
+
+				<td class="col-xs-6" width="45%">
+					<input ng-keydown="navigate($event, active.id, $index, 'value')" ng-enter="addObject('options');" focus-on="{{active.id}}_value_{{$index}}" type="text" class="form-control input-sm" ng-model="option.value" placeholder="" ng-hide="field.type == 'button_group'"/>
+
+					<input ng-keydown="navigate($event, active.id, $index, 'value')" ng-enter="addObject('options');" focus-on="{{active.id}}_value_{{$index}}" type="text" class="form-control input-sm" ng-model="option.value" placeholder="HTML allowed" ng-show="field.type == 'button_group'" />
+				</td>
+
+				<td ng-hide="field.type == 'text_list'">
+					<input type="checkbox" ng-model="option.selected" ng-change="toggleSelect($index);">
+				</td>
+
+				<td class="col-xs-1" width="5%">
+					<button type="button" class="button" ng-click="removeObject('options', $index);"><span class="dashicons dashicons-trash"></span></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div ng-hide="field.type == 'button_group' || field.type == 'text_list'">
+			<button type="button" class="button" ng-click="addObject('options');">+ Add Option</button>
+	</div>
+	<div ng-show="field.type == 'button_group'">
+		<button type="button" class="button" ng-click="addObject('options');">+ Add Button</button>
+	</div>
+	<div ng-show="field.type == 'text_list'">
+		<button type="button" class="button" ng-click="addObject('options');">+ Add Input</button>
+	</div>
+</section>

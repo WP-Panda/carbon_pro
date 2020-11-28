@@ -1,0 +1,68 @@
+.wpp-cookie-message {
+    padding: 15px 15px 0;
+    background-color: #000000c7;
+    position: fixed;
+    bottom: 0;
+}
+
+.wpp-cookie-message p {
+    color: #fff;
+    display: block;
+    width: 80%;
+    float: left;
+}
+
+a.wpp-cookie-apply {
+    display: block;
+    width: 15%;
+    float: right;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ff5722;
+    padding: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+a.wpp-cookie-apply:hover {
+    background-color: #ce532c;
+}
+
+a.wpp-cookie-apply:active {
+    background-color: #4CAF50;
+}
+
+span.wpp-close-cookie {
+    background-color: #000000c7;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    top: -68px;
+    right: 11px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+    box-sizing: content-box;
+}
+
+span.wpp-close-cookie:hover {
+    opacity: 1;
+}
+
+@media only screen and (max-width: 778px) {
+    .wpp-cookie-message p {
+        color: #fff;
+        display: block;
+        width: 100%;
+        float: none;
+    }
+
+    a.wpp-cookie-apply {
+        display: block;
+        margin: 20px auto 10px;
+        float: none;
+        width: 50%;
+    }
+}

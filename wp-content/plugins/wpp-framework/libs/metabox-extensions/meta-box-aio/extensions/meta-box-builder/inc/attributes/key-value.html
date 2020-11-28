@@ -1,0 +1,37 @@
+<section class="builder-options description description-wide">
+
+	<h4 class="custom-attributes__heading" ng-hide="field.type == 'fieldset_text'"><label>##key_label##</label></h4>
+
+	<table class="table custom-attributes__table" ng-show="active.##key_value##.length > 0">
+		<tbody>
+			<tr>
+				<td class="col-xs-5" width="45%" ng-show="field.type == 'fieldset_text'">
+					Key
+				</td>
+
+				<td class="col-xs-6" width="45%">
+					Label
+				</td>
+			</tr>
+			<tr ng-repeat="query_arg in active.##key_value## track by $index">
+				<td class="col-xs-5" width="45%">
+					<input ng-keydown="navigate($event, active.id, $index, 'key')" ng-enter="addObject('##key_value##');" focus-on="{{active.id}}_key_{{$index}}" type="text" class="form-control col-sm-6 input-sm" ng-model="query_arg.key" placeholder="Enter key" ng-hide="field.type == 'fieldset_text'" />
+					<input ng-keydown="navigate($event, active.id, $index, 'key')" ng-enter="addObject('##key_value##');" focus-on="{{active.id}}_key_{{$index}}" type="text" class="form-control col-sm-6 input-sm" ng-model="query_arg.key" placeholder="" ng-show="field.type == 'fieldset_text'" />
+				</td>
+
+				<td class="col-xs-6" width="45%">
+					<input focus-on="{{active.id}}_value_{{$index}}" type="text" class="form-control col-sm-6 input-sm" ng-model="query_arg.value" placeholder="Enter value" ng-hide="field.type == 'fieldset_text'">
+					<input focus-on="{{active.id}}_value_{{$index}}" type="text" class="form-control col-sm-6 input-sm" ng-model="query_arg.value" placeholder="" ng-show="field.type == 'fieldset_text'">
+				</td>
+
+				<td class="col-xs-1" width="5%">
+					<button type="button" class="button" ng-click="removeObject('##key_value##', $index);"><span class="dashicons dashicons-trash"></span></button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<button type="button" class="button custom-attributes__button" ng-click="addObject('##key_value##');" ng-hide="field.type == 'fieldset_text' || field.type == 'post' ">+ Attribute</button>
+	<button type="button" class="button custom-attributes__button" ng-click="addObject('##key_value##');" ng-show="field.type == 'fieldset_text'">+ Add Input</button>
+	<button type="button" class="button custom-attributes__button" ng-click="addObject('##key_value##');" ng-show="field.type == 'post'">+ Argument</button>
+</section>

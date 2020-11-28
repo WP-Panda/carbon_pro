@@ -1,0 +1,103 @@
+/*! formstone v1.4.16-1 [tooltip.css] 2019-08-06 | GPL-3.0 License | formstone.it */
+.bs-tooltip {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    top: -999px;
+    left: -999px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear
+}
+
+.bs-tooltip, .bs-tooltip *, .bs-tooltip :after, .bs-tooltip :before, .bs-tooltip:after, .bs-tooltip:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: none;
+    transition: none;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important
+}
+
+.bs-tooltip-visible {
+    opacity: 1
+}
+
+.bs-tooltip-content {
+    display: block;
+    float: left;
+    position: relative;
+    white-space: nowrap
+}
+
+.bs-tooltip-caret {
+    display: none
+}
+
+.bs-tooltip.bs-light {
+    z-index: 10;
+    -webkit-transition: opacity .15s linear;
+    transition: opacity .15s linear
+}
+
+.bs-tooltip.bs-light .bs-tooltip-content {
+    background: #263238!important;
+    border-radius: 2px;
+    color: #fff;
+    float: left;
+    font-size: 12px;
+    margin: 0;
+    padding: 10px 15px;
+    position: relative
+}
+
+.bs-tooltip.bs-light .bs-tooltip-caret {
+    width: 0;
+    height: 0;
+    content: '';
+    display: block;
+    margin: 0;
+    position: absolute
+}
+
+.bs-light.bs-tooltip-right .bs-tooltip-caret {
+    top: 0;
+    left: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid #263238
+}
+
+.bs-light.bs-tooltip-left .bs-tooltip-caret {
+    top: 0;
+    right: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #263238
+}
+
+.bs-light.bs-tooltip-bottom .bs-tooltip-caret, .bs-light.bs-tooltip-top .bs-tooltip-caret {
+    display: block;
+    float: none;
+    margin: 0 auto
+}
+
+.bs-light.bs-tooltip-top .bs-tooltip-caret {
+    bottom: -5px;
+    left: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #263238
+}
+
+.bs-light.bs-tooltip-bottom .bs-tooltip-caret {
+    top: -5px;
+    left: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #263238
+}

@@ -1,0 +1,14 @@
+[data-type="block-lab/full-big-block"] {
+    overflow: hidden;
+}
+[data-type="block-lab/full-big-block"] figure {
+    margin: 0;
+}
+
+[data-type="block-lab/full-big-block"] figcaption{
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}

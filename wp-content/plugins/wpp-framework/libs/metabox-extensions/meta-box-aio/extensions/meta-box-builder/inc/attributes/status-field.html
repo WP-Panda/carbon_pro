@@ -1,0 +1,8 @@
+<div ng-show="field.max_file_uploads">
+	<label>
+		<input class="ng-valid ng-dirty ng-valid-parse ng-touched" type="checkbox" ng-model="field.max_status" ng-true-value="'true'" ng-false-value="'false'"/>
+		 Show status
+		<span ng-hide="field.type == 'video'" class="tooltip"><span class="dashicons dashicons-editor-help"></span><b title="Display how many files uploaded/remaining"></b></span>
+		<span ng-show="field.type == 'video'" class="tooltip"><span class="dashicons dashicons-editor-help"></span><b title="Display how many files uploaded/remaining"></b></span>
+	</label>
+</div>

@@ -1,0 +1,6 @@
+[data-type="block-lab/separator"] hr.separating-element:after {
+    width: 137px;
+    display: block;
+    height: 93px;
+    margin: 0 auto;
+}

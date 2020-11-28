@@ -1,0 +1,64 @@
+.rwmb-confirmation {
+	padding: .75em 1.25em;
+	margin: 1em 0;
+	border: 1px solid #d0e9c6;
+	border-radius: .25em;
+	background: #dff0d8;
+	color: #3c763d;
+}
+
+.rwmb-profile-error {
+	color: #721c24;
+	background: #f8d7da;
+	padding: .75em 1.25em;
+	margin-bottom: 1em;
+	border: 1px solid #f5c6cb;
+	border-radius: .25em;
+}
+
+.rwmb-button.remove-clone {
+	width: 20px;
+	height: 20px;
+}
+
+.rwmb-button.remove-clone i,
+.rwmb-button.remove-clone i:before {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	font-family: sans-serif;
+	font-weight: bold;
+	font-style: normal;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.rwmb-button.remove-clone i:before {
+	content: "\2013";
+	top: -2px;
+}
+
+.rwmb-disable {
+	visibility: hidden;
+	position: absolute;
+	opacity: 0;
+}
+
+.rwmb-form-submit {
+	padding-top: 10px;
+}
+
+.rwmb-form-submit p {
+	float: left;
+	width: 50%;
+	height: 30px;
+	margin: 0 0 7px;
+}
+
+.rwmb-form-submit a {
+	text-decoration: inherit;
+	-webkit-box-shadow: 0 0 0;
+	        box-shadow: 0 0 0;
+}

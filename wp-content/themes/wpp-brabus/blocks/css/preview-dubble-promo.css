@@ -1,0 +1,19 @@
+
+[data-type="block-lab/dubble-promo"] {
+    overflow: hidden;
+}
+
+[data-type="block-lab/dubble-promo"] figure.col-12.col-sm-12.col-md-6.teaser-newsletter {
+    width: 50%;
+    float: left;
+    margin: 0;
+    position: relative;
+}
+
+[data-type="block-lab/dubble-promo"] figcaption {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}

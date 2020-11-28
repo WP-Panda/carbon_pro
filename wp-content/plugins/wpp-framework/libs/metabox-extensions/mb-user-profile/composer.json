@@ -1,0 +1,14 @@
+{
+  "repositories": [{
+    "type": "composer",
+    "url": "https://packages.metabox.io/d3868083e53c57b032d27c257404e200"
+  }],
+  "require": {
+    "meta-box/mb-user-meta": "dev-master"
+  },
+  "extra": {
+    "installer-paths": {
+      "vendor/meta-box/mb-user-meta": ["meta-box/mb-user-meta"]
+    }
+  }
+}

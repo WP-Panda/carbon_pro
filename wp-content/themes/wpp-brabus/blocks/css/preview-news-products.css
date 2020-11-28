@@ -1,0 +1,21 @@
+ul.wpp-thumb-img {
+    list-style: none;
+    overflow: hidden;
+    margin: 0!important;
+}
+
+li.wpp-block-thumb {
+    width: 33%;
+    display: block;
+    float: left;
+}
+
+section.container-fluid.responsive-gutter.section-padding-large.homepage-grid-teaser.hone-news-productcts {
+    padding: 0;
+}
+
+li.wpp-block-thumb img {
+    display: block;
+    width: 100%;
+    padding: 1%;
+}

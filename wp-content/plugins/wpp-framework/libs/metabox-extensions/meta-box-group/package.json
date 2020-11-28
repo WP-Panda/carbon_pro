@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "zip": "git archive -o meta-box-group.zip --prefix=meta-box-group/ HEAD",
+    "css": "node-sass group.scss --output-style=expanded --indent-type=tab --indent-width=1 -o .",
+    "upload": "scp meta-box-group.zip root@metabox.io:/var/www/metabox.io/downloads",
+    "release": "npm run zip && npm run upload"
+  }
+}

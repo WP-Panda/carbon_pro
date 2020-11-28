@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "zip": "git archive -o mb-admin-columns.zip --prefix=mb-admin-columns/ HEAD",
+    "upload": "scp mb-admin-columns.zip root@metabox.io:/var/www/metabox.io/downloads/",
+    "release": "npm run zip && npm run upload"
+  }
+}

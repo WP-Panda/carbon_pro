@@ -1,0 +1,28 @@
+<?php
+
+class MBB_Checkbox_List extends MBB_Field {
+	public function __construct() {
+		$options = Meta_Box_Attribute::get_attribute_content( 'options' );
+
+		$this->basic = array(
+			'id',
+			'name',
+			'desc',
+			null,
+			'options' => array(
+				'type' => 'custom',
+				'content' => $options,
+				'size'	=> 'wide'
+			),
+			'clone' => array(
+				'type' => 'checkbox',
+				'size' => 'wide'
+			),
+			'inline' => 'checkbox',
+		);
+
+		parent::__construct();
+	}
+}
+
+new MBB_Checkbox_List;
