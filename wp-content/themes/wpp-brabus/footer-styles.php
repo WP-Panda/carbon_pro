@@ -20,6 +20,7 @@ defined( 'ABSPATH' ) || exit;
 		from { -webkit-transform: rotate(0deg); }
 		to { -webkit-transform: rotate(360deg); }
 	}
+
 	@keyframes wpp-preloader-spin {
 		from {
 			transform:rotate(0deg);
