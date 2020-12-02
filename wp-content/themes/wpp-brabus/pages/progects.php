@@ -1,10 +1,10 @@
 <?php
-/*
-	Template Name: Projects
-	Template Post Type: page
-	*/
-defined( 'ABSPATH' ) || exit;
-get_header();
+	/*
+		Template Name: Projects
+		Template Post Type: page
+		*/
+	defined( 'ABSPATH' ) || exit;
+	get_header();
 
 ?>
 
@@ -16,43 +16,12 @@ get_header();
         <div id="object-data" class="neos-contentcollection wpp-mix-filter-wrap"
              data-id="<?php echo get_queried_object_id(); ?>">
 			<?php
-			$filters_data = wpp_br_sort_filter_args();
-
-
+				$filters_data = wpp_br_sort_filter_args();
+				wpp_get_template_part( 'templates/filters/progect-filter' );
+				wpp_get_template_part( 'templates/filters/progect-filter-new' );
 			?>
-            <div class="container">
 
-                <form id="wpp-project-filter" class="wpp-form-filter row">
 
-					<?php
-					$html = '';
-					foreach ( $filters_data as $one_filter_key => $one_filter_item ) :
-
-						if ( 'car_brand' === $one_filter_key ) {
-							$option = 'select_maker';
-						} elseif ( 'car_model' === $one_filter_key ) {
-							$option = 'select_model';
-						} else {
-							$option = 'tuning';
-						}
-
-						$html_s = '<option value="">' . wpp_br_lng( $option ) . '</option>';
-						foreach ( $one_filter_item as $one_key => $one_name ) {
-							$html_s .= sprintf( '<option value=\'.t_%s\' >%s</option>', (int) $one_key, $one_name );
-						}
-
-						$html .= sprintf( '<div class="col-12 col-sm-3 col-lg-3 wpp-form-row wpp-filers-wrap"><select name="%s"
-                              class="wpp-mix-filter form--text form--border-bottom dirty filter-news-cats">%s</select></div>', $one_filter_key, $html_s );
-					endforeach;
-
-					echo $html; ?>
-                    <div class="col-12 col-sm-3 col-lg-3 wpp-form-row">
-                        <input type="text"
-                               class="wpp_pr_searh form--text form--border"
-                               name="wpp_pr_searh" value="" placeholder="<?php e_wpp_br_lng( 'search' ); ?>"></div>
-                </form>
-
-            </div>
             <section class="wpp-clear"></section>
 
 
@@ -61,89 +30,89 @@ get_header();
 				'nopaging'  => true,
 				'order'     => 'ASC',
 			];
-			$car_query      = new WP_Query( $car_args );
+				$car_query  = new WP_Query( $car_args );
 
-			$order_class = wpp_fr_user_is_admin() ? ' wpp-posts-ordering' : null;
+				$order_class = wpp_fr_user_is_admin() ? ' wpp-posts-ordering' : null;
 
-			usort( $car_query->posts, function ( $post_a, $post_b ) {
+				usort( $car_query->posts, function( $post_a, $post_b ) {
 
-				$ordered = get_post_meta( get_queried_object_id(), 'posts_order', true );
+					$ordered = get_post_meta( get_queried_object_id(), 'posts_order', true );
 
-				if ( ! empty( $ordered ) ) {
+					if ( ! empty( $ordered ) ) {
 
-					$ordered = array_flip( $ordered );
+						$ordered = array_flip( $ordered );
 
-					$a = $ordered[ $post_a->ID ];
-					$b = $ordered[ $post_b->ID ];
+						$a = $ordered[ $post_a->ID ];
+						$b = $ordered[ $post_b->ID ];
 
-					if ( $a == $b ) {
+						if ( $a == $b ) {
+							return 0;
+						}
+
+						return ( $a < $b ) ? - 1 : 1;
+
+					} else {
 						return 0;
 					}
 
-					return ( $a < $b ) ? - 1 : 1;
-
-				} else {
-					return 0;
-				}
-
-			} );
+				} );
 
 
-			if ( $car_query->have_posts() ) : ?>
+				if ( $car_query->have_posts() ) : ?>
 
-                <section class="row wpp-fancy-box-gallery wpp-mix-item-wrap<?php echo $order_class; ?>">
-					<?php while ( $car_query->have_posts() ) : $car_query->the_post();
-						$id = get_the_ID();
-						ob_start();
-						$next        = '';
-						$post_makers = wp_get_post_terms( $id, 'attach_makers', array( 'fields' => 'all' ) );
-						$post_terms  = wp_get_post_terms( $id, 'product_cat', array( 'fields' => 'all' ) );
-						$firt_term   = wpp_get_term_parents_list( $post_terms[0]->term_id, 'product_cat', true );
+                    <section class="row wpp-fancy-box-gallery wpp-mix-item-wrap<?php echo $order_class; ?>">
+						<?php while ( $car_query->have_posts() ) : $car_query->the_post();
+							$id = get_the_ID();
+							ob_start();
+							$next        = '';
+							$post_makers = wp_get_post_terms( $id, 'attach_makers', array ( 'fields' => 'all' ) );
+							$post_terms  = wp_get_post_terms( $id, 'product_cat', array ( 'fields' => 'all' ) );
+							$firt_term   = wpp_get_term_parents_list( $post_terms[ 0 ]->term_id, 'product_cat', true );
 
-						if ( ! empty( $post_makers[0]->term_id ) ) {
-							$maker = $post_makers[0]->term_id;
-						}
-
-						if ( ! empty( $firt_term ) && is_array( $firt_term ) ) {
-							$first = $firt_term[0]['term_id'];
-
-
-							if ( $firt_term[0]['term_id'] !== $post_terms[0]->term_id ) {
-								$next = $post_terms[0]->term_id;
+							if ( ! empty( $post_makers[ 0 ]->term_id ) ) {
+								$maker = $post_makers[ 0 ]->term_id;
 							}
-						}
 
-						?>
-                        <div class="grid-teaser-details structured-content">
-                            <h4 class="grid-headline-icon"><?php echo get_the_title( $post->ID ); ?></h4>
-                            <p><?php echo get_post_meta( $post->ID, '_subtitle', true ); ?></p>
-                        </div>
-						<?php
-						$htmls = ob_get_clean();
+							if ( ! empty( $firt_term ) && is_array( $firt_term ) ) {
+								$first = $firt_term[ 0 ][ 'term_id' ];
 
-						$url    = get_the_post_thumbnail_url( '', 'full' );
-						$params = [
-							'wrap'  => '<div class="mix t_' . $first . ' t_' . $next . ' t_' . $maker . ' col-6 col-xs-6 col-sm-4 col-md-3 wpp-static-grid-item overlayed " aria-selected="true" data-prd_id="' . $id . '" data-car_brand="' . $first . '" data-car_model="' . $next . '" data-attach_brand="' . $maker . '"><a href="' . get_the_permalink( $id ) . '">%s' . $htmls . '</a></div>',
-							'class' => 'wpp-fancy-gallery-thumb',
-						];
-						e_wpp_fr_image_html( $url, wpp_br_thumb_array( $params ) );
 
-					endwhile; ?>
-                    <div class="cd-fail-message"
-                         style="display: none;"><?php e_wpp_br_lng( 'no_search_found' ); ?></div>
-                </section>
-			<?php endif; ?>
+								if ( $firt_term[ 0 ][ 'term_id' ] !== $post_terms[ 0 ]->term_id ) {
+									$next = $post_terms[ 0 ]->term_id;
+								}
+							}
+
+							?>
+                            <div class="grid-teaser-details structured-content">
+                                <h4 class="grid-headline-icon"><?php echo get_the_title( $post->ID ); ?></h4>
+                                <p><?php echo get_post_meta( $post->ID, '_subtitle', true ); ?></p>
+                            </div>
+							<?php
+							$htmls = ob_get_clean();
+
+							$url    = get_the_post_thumbnail_url( '', 'full' );
+							$params = [
+								'wrap'  => '<div class="mix t_' . $first . ' t_' . $next . ' t_' . $maker . ' col-6 col-xs-6 col-sm-4 col-md-3 wpp-static-grid-item overlayed " aria-selected="true" data-prd_id="' . $id . '" data-car_brand="' . $first . '" data-car_model="' . $next . '" data-attach_brand="' . $maker . '"><a href="' . get_the_permalink( $id ) . '">%s' . $htmls . '</a></div>',
+								'class' => 'wpp-fancy-gallery-thumb',
+							];
+							e_wpp_fr_image_html( $url, wpp_br_thumb_array( $params ) );
+
+						endwhile; ?>
+                        <div class="cd-fail-message"
+                             style="display: none;"><?php e_wpp_br_lng( 'no_search_found' ); ?></div>
+                    </section>
+				<?php endif; ?>
 
         </div>
     </div>
 
 <?php wp_reset_query();
-/**
- * Hook: woocommerce_after_main_content.
- *
- * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
- */
-do_action( 'woocommerce_after_main_content' );
+	/**
+	 * Hook: woocommerce_after_main_content.
+	 *
+	 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+	 */
+	do_action( 'woocommerce_after_main_content' );
 ?>
     <script src="https://codyhouse.co/demo/content-filter/js/jquery.mixitup.min.js"></script>
     <script>
@@ -359,17 +328,17 @@ do_action( 'woocommerce_after_main_content' );
         })
     </script>
 <?php
-/*   $(document).on('change', '#wpp-project-filter select', function (e) {
+	/*   $(document).on('change', '#wpp-project-filter select', function (e) {
 
-				  $('.wpp-static-grid-item').hide();
-				  $('.wpp-static-grid-item' + wppgetstr() + wppget_txt()).fadeIn();
+					  $('.wpp-static-grid-item').hide();
+					  $('.wpp-static-grid-item' + wppgetstr() + wppget_txt()).fadeIn();
 
-			  });
+				  });
 
-			  $('.wpp_pr_searh').keyup(function () {
+				  $('.wpp_pr_searh').keyup(function () {
 
-				  $('.wpp-static-grid-item').hide();
-				  $('.wpp-static-grid-item' + wppgetstr() + wppget_txt()).fadeIn();
+					  $('.wpp-static-grid-item').hide();
+					  $('.wpp-static-grid-item' + wppgetstr() + wppget_txt()).fadeIn();
 
-			  });*/
-get_footer();
+				  });*/
+	get_footer();
