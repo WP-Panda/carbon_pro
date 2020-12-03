@@ -380,14 +380,14 @@
 
 		foreach ( $array as $key => $val ) {
 
-			$class = is_array( $val ) ? ' class="filter-sublavel"' : '';
+			$class = is_array( $val ) ? ' filter-sublavel' : '';
 			$class_t = is_array( $val ) ? '<span class="trigger"></span>' : '';
 
-			$out .= sprintf( '<li data-val=".t_%d"%s><span class="filter-item">%s</span>%s</li>', $key, $class, get_term( $key )->name,$class_t );
+			$out .= sprintf( '<li class="wpp-filter-item %s"><span class="filter-item" data-val=".t_%d">%s</span>%s', $class,$key,  get_term( $key )->name,$class_t );
 			if ( is_array( $val ) ) {
 				$out .= tax_tree_with_labels( $val, '', true );
 			}
-			$out .='';
+			$out .='</li>';
 		}
 
 		$out .= '</ul>';

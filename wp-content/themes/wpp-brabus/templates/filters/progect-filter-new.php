@@ -9,15 +9,6 @@
 	$filters_data = wpp_br_sort_filter_args();
 
 
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-	echo '<hr>';
-
 
 ?>
 <style>
@@ -101,7 +92,7 @@
         display: none;
     }
 
-    li.check-filter:after {
+    li .check-filter:after {
         content: '';
         width: 25px;
         height: 25px;
@@ -170,7 +161,6 @@
 
 				$html_s = '<option value="">' . wpp_br_lng( $option ) . '</option>';
 				foreach ( $one_filter_item as $one_key => $one_name ) {
-					wpp_dump($one_name);
 					$html_s .= sprintf( '<option value=\'.t_%s\' >%s</option>', (int) $one_key, $one_name );
 				}
 

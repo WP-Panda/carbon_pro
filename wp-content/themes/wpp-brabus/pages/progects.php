@@ -264,7 +264,6 @@
                     });
 
 
-
                     console.log(self.groups);
                     self.bindHandlers();
                 },
@@ -273,10 +272,10 @@
                 bindHandlers: function () {
                     var self = this;
 
-                /*    $(document).on('click','.filter-drop',function () {
-                        console.log('CC')
-                        self.parseFilters();
-                    })*/
+                    /*    $(document).on('click','.filter-drop',function () {
+							console.log('CC')
+							self.parseFilters();
+						})*/
 
                     self.$filters.on('change', function () {
                         console.log('kC')
@@ -302,8 +301,8 @@
                                 group.active.push($this.attr('data-filter'));
                             } else if ($this.is('input[type="hidden"]')) {
                                 if ($this.val() !== '') {
-                                   var $string_val = $this.val().split(',');
-                                    $.each($string_val,function (i,v) {
+                                    var $string_val = $this.val().split(',');
+                                    $.each($string_val, function (i, v) {
                                         group.active.push(v);
                                     });
                                 }
@@ -334,7 +333,6 @@
             };
 
 
-
             /**
              * ыпадающий список
              */
@@ -350,106 +348,115 @@
                 $_drop.slideDown();
                 $_input.attr('type', 'text').focus();
 
-            })
+            }),
 
 
-            /**
-             * Закрываем список
-             */
-            $(document).click(function (event) {
+                /**
+                 * Закрываем список
+                 */
+                $(document).click(function (event) {
 
 
-                if (!$(event.target).is(".wpp-filers-wrap, .filter-drop, .filter-drop *")) {
-                    $('.wpp-filers-wrap').removeClass('show-drop');
-                    //if($('.wpp-filers-wrap').find('input.filter-display').val() == '') {
+                    if (!$(event.target).is(".wpp-filers-wrap, .filter-drop, .filter-drop *")) {
+                        $('.wpp-filers-wrap').removeClass('show-drop');
+                        //if($('.wpp-filers-wrap').find('input.filter-display').val() == '') {
                         $('.wpp-filers-wrap').find('input.filter-display').attr('type', 'hidden');
                         $('.wpp-filers-wrap').find('button').attr('show');
-                    //}
-                    $('.filter-drop').slideUp();
-                }
-            });
+                        //}
+                        $('.filter-drop').slideUp();
+                    }
+                }),
 
 
-           /* $(document).on('focusout', '.filter-select input', function (e) {
-				e.preventDefault();
-				e.stopImmediatePropagation()
-				let $_this = $(this),
-					$_parent = $_this.parents('.wpp-filers-wrap'),
-					$_drop = $_parent.find('.filter-drop');
+                /* $(document).on('focusout', '.filter-select input', function (e) {
+					 e.preventDefault();
+					 e.stopImmediatePropagation()
+					 let $_this = $(this),
+						 $_parent = $_this.parents('.wpp-filers-wrap'),
+						 $_drop = $_parent.find('.filter-drop');
 
 
-				$_this.attr('type', 'hidden');
+					 $_this.attr('type', 'hidden');
 
-			})*/
+				 })*/
 
-            $(document).on('click', '.filter-drop li', function (e) {
+                /**
+                 * Наполнение фильтра
+                 */
+                $(document).on('click', '.filter-drop li', function (e) {
 
-                e.preventDefault();
-                e.stopImmediatePropagation()
+                    e.preventDefault();
+                    e.stopImmediatePropagation()
 
-                let $_this = $(this),
-                    $_display_input = $_this.parents('.wpp-filers-wrap').find('input.filter-display'),
-                    $_model_input = $_this.parents('.wpp-filers-wrap').find('input.filter-values'),
-                    $_value_input = $_display_input.val(),
-                    $_value_model = $_model_input.val(),
-                    $_model= $_this.data('val'),
-                    $_text = $_this.text();
+                    let $_this = $(this),
+                        $_display_input = $_this.parents('.wpp-filers-wrap').find('input.filter-display'),
+                        $_child_check = $_this.find('.check-filter').parent('li'),
+                        $_this_li = $_this.parent('li'),
+                        $_parent_check = $_this.parents('li').first().find('.filter-item'),
+                        $_model_input = $_this.parents('.wpp-filers-wrap').find('input.filter-values'),
+                        $_value_input = $_display_input.val(),
+                        $_value_model = $_model_input.val(),
+                        $_item = $_this.find('.filter-item').first(),
+                        $_model = $_item.data('val'),
+                        $_text = $_item.first().text();
 
-                if (!$_this.hasClass('check-filter')) {
-                    $_this.addClass('check-filter');
+                    $_parent_check.css({'color':'red'})
 
-                    var $new_val = '' == $_value_input ? $_text : $_value_input + ',' + $_text;
-                    var $new_models = '' == $_value_model ? $_model: $_value_model + ',' + $_model;
+                    $_parent_check.removeClass('.check-filter');
 
-                } else {
-                    $_this.removeClass('check-filter')
-                    var $vals_array = $_value_input.split(','),
-                        $diff_array = $vals_array.splice($.inArray($_text, $vals_array), 1),
-                        $new_val = $vals_array.join(','),
-                        $models_array = $_value_model.split(','),
-                        $diff_model_array = $models_array .splice($.inArray($_model, $models_array ), 1),
-                        $new_models = $models_array.join(',');
+                    if (!$_item.hasClass('check-filter')) {
+                        $_item.addClass('check-filter');
 
-                }
+                        var $new_val = '' == $_value_input ? $_text : $_value_input + ',' + $_text;
+                        var $new_models = '' == $_value_model ? $_model : $_value_model + ',' + $_model;
 
-               var  $text = $new_val !== '' ? $new_val : 'Все модели';
-                $_this.parents('.wpp-filers-wrap').find('button').text($text);
-                $_this.parents('.wpp-filers-wrap').find('input.filter-display').focus().val($new_val);
-                $_this.parents('.wpp-filers-wrap').find('input.filter-values').focus().val($new_models).trigger("change");
+                    } else {
+                        $_item.removeClass('check-filter')
+                        var $vals_array = $_value_input.split(','),
+                            $diff_array = $vals_array.splice($.inArray($_text, $vals_array), 1),
+                            $new_val = $vals_array.join(','),
+                            $models_array = $_value_model.split(','),
+                            $diff_model_array = $models_array.splice($.inArray($_model, $models_array), 1),
+                            $new_models = $models_array.join(',');
+
+                    }
+
+                    var $text = $new_val !== '' ? $new_val : 'Все модели';
+                    $_this.parents('.wpp-filers-wrap').find('button').text($text);
+                    $_display_input.focus().val($new_val);
+                    $_model_input.focus().val($new_models).trigger("change");
 
 
-            })
+                }),
 
-            $('.filter-drop').hover(
-                function () {
+                $('.filter-drop').hover(
+                    function () {
+                        $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
+                    },
+                    function () {
+                    }
+                ),
+
+
+                $(document).on('click', '.filter-drop', function (e) {
                     $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
-                },
-                function () {}
+                }),
 
-            );
+                $(document).on('click', '.trigger', function (e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation()
+                    let $_this = $(this),
+                        $_list = $_this.parent().find('ul').first();
 
+                    if (!$_this.hasClass('opened')) {
+                        $_list.show();
+                        $_this.addClass('opened');
+                    } else {
+                        $_list.hide();
+                        $_this.removeClass('opened');
+                    }
 
-            $(document).on('click', '.filter-drop', function (e) {
-                $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
-            })
-
-            $(document).on('click', '.trigger', function (e) {
-                e.preventDefault();
-                e.stopImmediatePropagation()
-                let $_this = $(this),
-                    $_list = $_this.parent().next('ul');
-
-                if (!$_this.hasClass('opened')) {
-                    $_list.show();
-                    $_this.addClass('opened');
-                } else {
-                    $_list.hide();
-                    $_this.removeClass('opened');
-                }
-
-            })
-
-
+                })
 
 
         })
