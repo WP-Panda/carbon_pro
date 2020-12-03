@@ -383,7 +383,7 @@
 			$class = is_array( $val ) ? ' class="filter-sublavel"' : '';
 			$class_t = is_array( $val ) ? '<span class="trigger"></span>' : '';
 
-			$out .= sprintf( '<li data-val="%d"%s><span class="filter-item">%s</span>%s</li>', $key, $class, get_term( $key )->name,$class_t );
+			$out .= sprintf( '<li data-val=".t_%d"%s><span class="filter-item">%s</span>%s</li>', $key, $class, get_term( $key )->name,$class_t );
 			if ( is_array( $val ) ) {
 				$out .= tax_tree_with_labels( $val, '', true );
 			}
@@ -404,7 +404,7 @@
                 <div class="filter-select">
                         <button>Все модели</button>
                         <input type="hidden" id="filter-models-input" class="filter-display">
-                        <input type="hidden" id="filter-models-data" class="filter-values" name="filter_models">
+                        <input type="hidden" id="filter-models-data" class="filter-values wpp-mix-filter" name="filter_models">
                 </div>
                         <div class="filter-drop">
                         %s   

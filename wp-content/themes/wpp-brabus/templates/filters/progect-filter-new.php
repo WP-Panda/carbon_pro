@@ -8,6 +8,7 @@
 	defined( 'ABSPATH' ) || exit;
 	$filters_data = wpp_br_sort_filter_args();
 
+
 	echo '<hr>';
 	echo '<hr>';
 	echo '<hr>';
@@ -161,11 +162,7 @@
 			$html = '';
 			foreach ( $filters_data as $one_filter_key => $one_filter_item ) :
 
-				if ( 'car_brand' === $one_filter_key ) {
-					$option = 'select_maker';
-					continue;
-				} elseif ( 'car_model' === $one_filter_key ) {
-					$option = 'select_model';
+				if ( 'car_brand' === $one_filter_key || 'car_model' === $one_filter_key) {
 					continue;
 				} else {
 					$option = 'tuning';
@@ -173,6 +170,7 @@
 
 				$html_s = '<option value="">' . wpp_br_lng( $option ) . '</option>';
 				foreach ( $one_filter_item as $one_key => $one_name ) {
+					wpp_dump($one_name);
 					$html_s .= sprintf( '<option value=\'.t_%s\' >%s</option>', (int) $one_key, $one_name );
 				}
 
@@ -188,104 +186,3 @@
     </form>
 
 </div>
-
-<script>
-    jQuery(function ($) {
-        /**
-         * ыпадающий список
-         */
-        $(document).on('click', '.filter-select button', function (e) {
-            e.preventDefault();
-            e.stopImmediatePropagation()
-            let $_this = $(this),
-                $_parent = $_this.parents('.wpp-filers-wrap'),
-                $_drop = $_parent.find('.filter-drop'),
-                $_input = $_this.next('input.filter-display');
-
-            $_parent.addClass('show-drop');
-            $_drop.slideDown();
-            $_input.attr('type', 'text').focus();
-
-        })
-
-
-
-
-        /**
-         * Закрываем список
-         */
-        $(document).click(function(event) {
-
-
-
-            if (!$(event.target).is(".wpp-filers-wrap, .filter-drop, .filter-drop *")) {
-                $('.wpp-filers-wrap').removeClass('show-drop');
-                $('.wpp-filers-wrap').find('input.filter-display').attr('type', 'hidden');
-                $('.wpp-filers-wrap').find('button').attr('show');
-                $('.filter-drop').slideUp();
-            }
-        });
-
-
-        /*$(document).on('focusout', '.filter-select input', function (e) {
-            e.preventDefault();
-            e.stopImmediatePropagation()
-            let $_this = $(this),
-                $_parent = $_this.parents('.wpp-filers-wrap'),
-                $_drop = $_parent.find('.filter-drop');
-
-
-            $_this.attr('type', 'hidden');
-
-        })*/
-
-        $(document).on('click', '.filter-drop li', function (e) {
-
-            e.preventDefault();
-            e.stopImmediatePropagation()
-
-            let $_this = $(this);
-
-            if (!$_this.hasClass('check-filter')) {
-                $_this.addClass('check-filter');
-            } else {
-                $_this.removeClass('check-filter')
-            }
-
-            $_this.parents('.wpp-filers-wrap').find('input.filter-display').focus();
-
-
-        })
-
-        $('.filter-drop').hover(
-            function () {
-                $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
-            },
-            function () {
-                console.log('Вы убрали курсор с элемента');
-            }
-        );
-
-
-        $(document).on('click', '.filter-drop', function (e) {
-            $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
-        })
-
-            $(document).on('click', '.trigger', function (e) {
-            e.preventDefault();
-            e.stopImmediatePropagation()
-            let $_this = $(this),
-                $_list = $_this.parent().next('ul');
-
-            if (!$_this.hasClass('opened')) {
-                $_list.show();
-                $_this.addClass('opened');
-            } else {
-                $_list.hide();
-                $_this.removeClass('opened');
-            }
-
-        })
-
-    })
-</script>

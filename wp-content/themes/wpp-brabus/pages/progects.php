@@ -17,7 +17,6 @@
              data-id="<?php echo get_queried_object_id(); ?>">
 			<?php
 				$filters_data = wpp_br_sort_filter_args();
-				wpp_get_template_part( 'templates/filters/progect-filter' );
 				wpp_get_template_part( 'templates/filters/progect-filter-new' );
 			?>
 
@@ -64,24 +63,19 @@
 						<?php while ( $car_query->have_posts() ) : $car_query->the_post();
 							$id = get_the_ID();
 							ob_start();
-							$next        = '';
-							$post_makers = wp_get_post_terms( $id, 'attach_makers', array ( 'fields' => 'all' ) );
-							$post_terms  = wp_get_post_terms( $id, 'product_cat', array ( 'fields' => 'all' ) );
-							$firt_term   = wpp_get_term_parents_list( $post_terms[ 0 ]->term_id, 'product_cat', true );
+
+							$post_makers = wp_get_post_terms( $id, 'attach_makers', [ 'fields' => 'all' ] );
+							$post_terms  = wp_get_post_terms( $id, 'product_cat', [ 'fields' => 'ids' ] );
+
 
 							if ( ! empty( $post_makers[ 0 ]->term_id ) ) {
 								$maker = $post_makers[ 0 ]->term_id;
 							}
 
-							if ( ! empty( $firt_term ) && is_array( $firt_term ) ) {
-								$first = $firt_term[ 0 ][ 'term_id' ];
 
-
-								if ( $firt_term[ 0 ][ 'term_id' ] !== $post_terms[ 0 ]->term_id ) {
-									$next = $post_terms[ 0 ]->term_id;
-								}
-							}
-
+							$parents      = get_ancestors( $post_terms[ 0 ], 'product_cat', 'taxonomy' );
+							$models       = array_unique( ( $parents + $post_terms ) );
+							$models_class = 't_' . implode( ' t_', $models );
 							?>
                             <div class="grid-teaser-details structured-content">
                                 <h4 class="grid-headline-icon"><?php echo get_the_title( $post->ID ); ?></h4>
@@ -92,7 +86,7 @@
 
 							$url    = get_the_post_thumbnail_url( '', 'full' );
 							$params = [
-								'wrap'  => '<div class="mix t_' . $first . ' t_' . $next . ' t_' . $maker . ' col-6 col-xs-6 col-sm-4 col-md-3 wpp-static-grid-item overlayed " aria-selected="true" data-prd_id="' . $id . '" data-car_brand="' . $first . '" data-car_model="' . $next . '" data-attach_brand="' . $maker . '"><a href="' . get_the_permalink( $id ) . '">%s' . $htmls . '</a></div>',
+								'wrap'  => '<div class="mix ' . $models_class . ' t_' . $maker . ' col-6 col-xs-6 col-sm-4 col-md-3 wpp-static-grid-item overlayed " aria-selected="true" data-prd_id="' . $id . '" data-car_brand="" data-car_model="" data-attach_brand="' . $maker . '"><a href="' . get_the_permalink( $id ) . '">%s' . $htmls . '</a></div>',
 								'class' => 'wpp-fancy-gallery-thumb',
 							];
 							e_wpp_fr_image_html( $url, wpp_br_thumb_array( $params ) );
@@ -163,7 +157,7 @@
                 buttonFilter.init();
                 $('.wpp-mix-item-wrap').mixItUp({
                     controls: {
-                        enable: false
+                        enable: true
                     },
                     callbacks: {
                         onMixStart: function () {
@@ -186,12 +180,11 @@
 
                                 let val = $(this).val();
 
-                                console.info('val', unique);
 
                                 if (!unique.includes(val.substr(1))) {
-                                    $(this).attr('disabled', 'disabled');
+                                    //$(this).attr('disabled', 'disabled');
                                 } else {
-                                    $(this).removeAttr('disabled');
+                                    //$(this).removeAttr('disabled');
                                 }
                             })
 
@@ -260,7 +253,7 @@
                     self.$filters = $('.wpp-mix-filter-wrap');
                     self.$container = $('.wpp-mix-item-wrap');
 
-                    self.$filters.find('.wpp-filers-wrap').each(function () {
+                    self.$filters.find('.wpp-filers-wrap').each(function (i) {
                         var $this = $(this);
 
                         self.groups.push({
@@ -270,6 +263,9 @@
                         });
                     });
 
+
+
+                    console.log(self.groups);
                     self.bindHandlers();
                 },
 
@@ -277,7 +273,13 @@
                 bindHandlers: function () {
                     var self = this;
 
+                /*    $(document).on('click','.filter-drop',function () {
+                        console.log('CC')
+                        self.parseFilters();
+                    })*/
+
                     self.$filters.on('change', function () {
+                        console.log('kC')
                         self.parseFilters();
                     });
                 },
@@ -298,6 +300,13 @@
                                 group.active.push($this.val());
                             } else if ($this.find('.selected').length > 0) {
                                 group.active.push($this.attr('data-filter'));
+                            } else if ($this.is('input[type="hidden"]')) {
+                                if ($this.val() !== '') {
+                                   var $string_val = $this.val().split(',');
+                                    $.each($string_val,function (i,v) {
+                                        group.active.push(v);
+                                    });
+                                }
                             }
                         });
                         console.log(group.active)
@@ -323,6 +332,124 @@
                     }
                 }
             };
+
+
+
+            /**
+             * ыпадающий список
+             */
+            $(document).on('click', '.filter-select button', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation()
+                let $_this = $(this),
+                    $_parent = $_this.parents('.wpp-filers-wrap'),
+                    $_drop = $_parent.find('.filter-drop'),
+                    $_input = $_this.next('input.filter-display');
+
+                $_parent.addClass('show-drop');
+                $_drop.slideDown();
+                $_input.attr('type', 'text').focus();
+
+            })
+
+
+            /**
+             * Закрываем список
+             */
+            $(document).click(function (event) {
+
+
+                if (!$(event.target).is(".wpp-filers-wrap, .filter-drop, .filter-drop *")) {
+                    $('.wpp-filers-wrap').removeClass('show-drop');
+                    //if($('.wpp-filers-wrap').find('input.filter-display').val() == '') {
+                        $('.wpp-filers-wrap').find('input.filter-display').attr('type', 'hidden');
+                        $('.wpp-filers-wrap').find('button').attr('show');
+                    //}
+                    $('.filter-drop').slideUp();
+                }
+            });
+
+
+           /* $(document).on('focusout', '.filter-select input', function (e) {
+				e.preventDefault();
+				e.stopImmediatePropagation()
+				let $_this = $(this),
+					$_parent = $_this.parents('.wpp-filers-wrap'),
+					$_drop = $_parent.find('.filter-drop');
+
+
+				$_this.attr('type', 'hidden');
+
+			})*/
+
+            $(document).on('click', '.filter-drop li', function (e) {
+
+                e.preventDefault();
+                e.stopImmediatePropagation()
+
+                let $_this = $(this),
+                    $_display_input = $_this.parents('.wpp-filers-wrap').find('input.filter-display'),
+                    $_model_input = $_this.parents('.wpp-filers-wrap').find('input.filter-values'),
+                    $_value_input = $_display_input.val(),
+                    $_value_model = $_model_input.val(),
+                    $_model= $_this.data('val'),
+                    $_text = $_this.text();
+
+                if (!$_this.hasClass('check-filter')) {
+                    $_this.addClass('check-filter');
+
+                    var $new_val = '' == $_value_input ? $_text : $_value_input + ',' + $_text;
+                    var $new_models = '' == $_value_model ? $_model: $_value_model + ',' + $_model;
+
+                } else {
+                    $_this.removeClass('check-filter')
+                    var $vals_array = $_value_input.split(','),
+                        $diff_array = $vals_array.splice($.inArray($_text, $vals_array), 1),
+                        $new_val = $vals_array.join(','),
+                        $models_array = $_value_model.split(','),
+                        $diff_model_array = $models_array .splice($.inArray($_model, $models_array ), 1),
+                        $new_models = $models_array.join(',');
+
+                }
+
+               var  $text = $new_val !== '' ? $new_val : 'Все модели';
+                $_this.parents('.wpp-filers-wrap').find('button').text($text);
+                $_this.parents('.wpp-filers-wrap').find('input.filter-display').focus().val($new_val);
+                $_this.parents('.wpp-filers-wrap').find('input.filter-values').focus().val($new_models).trigger("change");
+
+
+            })
+
+            $('.filter-drop').hover(
+                function () {
+                    $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
+                },
+                function () {}
+
+            );
+
+
+            $(document).on('click', '.filter-drop', function (e) {
+                $(this).parents('.wpp-filers-wrap').find('input.filter-display').focus();
+            })
+
+            $(document).on('click', '.trigger', function (e) {
+                e.preventDefault();
+                e.stopImmediatePropagation()
+                let $_this = $(this),
+                    $_list = $_this.parent().next('ul');
+
+                if (!$_this.hasClass('opened')) {
+                    $_list.show();
+                    $_this.addClass('opened');
+                } else {
+                    $_list.hide();
+                    $_this.removeClass('opened');
+                }
+
+            })
+
+
 
 
         })

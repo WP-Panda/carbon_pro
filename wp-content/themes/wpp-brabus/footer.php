@@ -359,7 +359,7 @@ $webOS  = stripos( $_SERVER['HTTP_USER_AGENT'], "webOS" );
         });
 
 
-        $(document).on('change', '.filter-news-cats , .filter-news-model', function () {
+        $(document).on('change', '.filter-news-cats , .filter-news-model, #filter-models-data', function () {
 
             if ($(this).hasClass('filter-news-cats')) {
                 $('.filter-news-model').attr('disabled', 'disabled');
