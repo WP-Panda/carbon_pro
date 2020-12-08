@@ -313,8 +313,15 @@
 	 *
 	 * @return array|mixed
 	 */
-	function wpp_get_term_product_tree( $post_type = [ 'project' ], $taxonomy = 'product_cat' ) {
+	function wpp_get_term_product_tree( $post_type = null, $taxonomy = null, $id ) {
 
+		if ( empty( $post_type ) ) {
+			$post_type = [ 'project' ];
+		}
+
+		if ( empty( $taxonomy ) ) {
+			$taxonomy = 'product_cat';
+		}
 
 		$arrgss = [];
 
@@ -363,35 +370,39 @@
 		}
 
 
+		if ( ! empty( $id ) ) {
+			return $arrgss[ $id ];
+		}
+
 		return $arrgss;
 	}
 
 
-	function tax_tree_with_labels( $array = null, $out = '',$drop = false) {
+	function tax_tree_with_labels( $array = null, $out = '', $drop = false, $n = 1, $cars_vas_maker = [] ) {
 		if ( empty( $array ) ) {
-			$array = wpp_get_term_product_tree();
+			$array = wpp_get_term_product_tree( '', '', 503 );
 		}
-
-
-
-
 
 		$out .= '<ul>';
 
+		if ( empty( $cars_vas_maker ) ) :
+			$cars_vs_maker = wpp_get_post_tems_maker();
+		endif;
+
 		foreach ( $array as $key => $val ) {
 
-			$class = is_array( $val ) ? ' filter-sublavel' : '';
+			$class   = is_array( $val ) ? ' filter-sublavel' : '';
 			$class_t = is_array( $val ) ? '<span class="trigger"></span>' : '';
-
-			$out .= sprintf( '<li class="wpp-filter-item %s"><span class="filter-item" data-val=".t_%d">%s</span>%s', $class,$key,  get_term( $key )->name,$class_t );
+			//if ( $n !== 1 ) {
+			$out .= sprintf( '<li class="wpp-filter-item %s"><span class="filter-item" data-tun="%s" data-val=".t_%d">%s</span>%s', $class, '.t_' . implode( ',.t_', $cars_vs_maker[ $key ] ), $key, get_term( $key )->name, $class_t );
+			//}
 			if ( is_array( $val ) ) {
-				$out .= tax_tree_with_labels( $val, '', true );
+				$n ++;
+				$out .= tax_tree_with_labels( $val, '', true, $n, $cars_vs_maker );
 			}
-			$out .='</li>';
+			$out .= '</li>';
 		}
-
 		$out .= '</ul>';
-
 
 		return $out;
 
@@ -402,7 +413,7 @@
 		$wrap = <<<WREAP
 		<div class="col-12 col-sm-3 col-lg-3 wpp-form-row wpp-filers-wrap">
                 <div class="filter-select">
-                        <button>Все модели</button>
+                        <button class="wpp-f-active-button" data-text="Все модели">Все модели</button>
                         <input type="hidden" id="filter-models-input" class="filter-display">
                         <input type="hidden" id="filter-models-data" class="filter-values wpp-mix-filter" name="filter_models">
                 </div>
@@ -413,6 +424,128 @@
                
 WREAP;
 
-		echo sprintf( $wrap, tax_tree_with_labels() );
+		return sprintf( $wrap, tax_tree_with_labels() );
+
+	}
+
+
+	/**
+	 *  Выпадающий список фильтр
+	 * обертка
+	 *
+	 * @return string
+	 */
+	function wpp_filter_data_wrap() {
+
+		$wrap = <<<WREAP
+		<div class="col-12 col-sm-4 col-lg-4 wpp-form-row wpp-filers-wrap model_class">
+               <div class="wpp-f-trigger-group">
+                    <button class="wpp-f-active-button" data-text="Все модели">Все модели</button>
+                    <input type="hidden" class="wpp-f-display-input" name="">
+                    <input type="hidden" class="wpp-f-search-input" name="">
+                    <input type="hidden" class="wpp-f-keys-input wpp-mix-filter" value="%s" name="filter_models">
+                </div>
+                <div class="model-drop"></div>
+                
+         </div>
+               
+WREAP;
+
+		return sprintf($wrap,!empty($_GET['filter_models']) ? $_GET['filter_models'] : '');
+	}
+
+
+	/**
+	 * Список выпадающих полей
+	 *
+	 * @param null   $array
+	 * @param string $out
+	 * @param bool   $drop
+	 * @param int    $n
+	 *
+	 * @return string
+	 */
+	function wpp_tax_tree_with_labels( $array = null, $out = '', $drop = false, $n = 1, $id, $cars_vs_maker = null, $a = 1 ) {
+
+		if ( empty( $array ) ) {
+			$array = wpp_get_term_product_tree( '', '', $id );
+		}
+
+		$class = $n === 1 ? ' class="wpp-f-drop-list"' : '';
+
+		$out .= sprintf( '<ul%s>', $class );
+		if($n === 1 ) {
+			$out .= sprintf('<li class="wpp-f-all">Любая</li>');
+		}
+
+		if ( empty( $cars_vas_maker ) ) :
+			$cars_vs_maker = wpp_get_post_tems_maker();
+		endif;
+
+		foreach ( $array as $key => $val ) {
+
+			$class   = is_array( $val ) ? ' filter-sublavel' : '';
+			$class_t = is_array( $val ) ? '<span class="trigger"></span>' : '';
+
+			$out .= sprintf( '<li class="wpp-filter-item %s" data-tun="%s" data-value=".t_%d" data-level="%d"><span class="f-item-text">%s</span>%s', $class, '.t_' . implode( ',.t_', $cars_vs_maker[ $key ] ), $key, $a, get_term( $key )->name, $class_t );
+
+			if ( is_array( $val ) ) {
+				$n ++;
+				$out .= wpp_tax_tree_with_labels( $val, '', true, $n, $cars_vs_maker, $a );
+			}
+
+
+			$out .= '</li>';
+
+		}
+
+
+		$out .= '</ul>';
+
+		return $out;
+
+	}
+
+
+	/**
+	 * Ключ - модели : значение - массив тюнинга
+	 *
+	 * @return array
+	 */
+
+	function wpp_get_post_tems_maker() {
+
+		$car_args = [
+			'post_type' => [ 'project' ],
+			'nopaging'  => true,
+			'order'     => 'ASC',
+		];
+
+
+		$posts = get_posts( $car_args );
+
+		$maker = [];
+
+
+		foreach ( $posts as $post ) {
+
+			$post_makers = wp_get_post_terms( $post->ID, 'attach_makers', [ 'fields' => 'ids' ] );
+			$post_terms  = wp_get_post_terms( $post->ID, 'product_cat', [ 'fields' => 'ids' ] );
+
+			if ( ! empty( $post_makers ) ) {
+				$maker[ $post_terms[ 0 ] ][] = $post_makers[ 0 ];
+
+				$parents = get_ancestors( $post_terms[ 0 ], 'product_cat', 'taxonomy' );
+
+				if ( ! empty( $parents ) ) {
+					foreach ( $parents as $parent ) {
+						$maker[ $parent ][] = $post_makers[ 0 ];
+					}
+				}
+			}
+
+		}
+
+		return $maker;
 
 	}

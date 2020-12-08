@@ -701,6 +701,6 @@ $webOS  = stripos( $_SERVER['HTTP_USER_AGENT'], "webOS" );
 
     })(jQuery);
 </script>
-<script>var lazyLoadInstance = new LazyLoad();</script>
+<script>//var lazyLoadInstance = new LazyLoad();</script>
 </body>
 </html>

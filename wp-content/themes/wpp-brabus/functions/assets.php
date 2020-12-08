@@ -8,6 +8,7 @@ function wpp_brabus_assets() {
 	$lang       = ! empty( $actual_url['lang_url'] ) ? $actual_url['lang_url'] . '.' : '';
 
 	wp_enqueue_style( BRABUS_PREF . 'project', BRABUS_URL . '/assets/css/project.css', [], BRABUS_VER, 'all' );
+	wp_enqueue_style( BRABUS_PREF . 'csel', BRABUS_URL . '/assets/css/justselect.min.css', [], BRABUS_VER, 'all' );
 
 	if ( is_front_page() || is_home() ) :
 		wp_enqueue_style( BRABUS_PREF . 'custom-homepage', BRABUS_URL . '/assets/css/custom-homepage.css', [], BRABUS_VER, 'all' );
@@ -20,6 +21,7 @@ function wpp_brabus_assets() {
 	], BRABUS_VER, true );
 
 	wp_enqueue_script( BRABUS_PREF . 'bra-bra', BRABUS_URL . '/assets/js/brabra.js', [], BRABUS_VER, true );
+	wp_enqueue_script( BRABUS_PREF . 'csel', BRABUS_URL . '/assets/js/justselect.min.js', [], BRABUS_VER, true );
 	wp_enqueue_script( BRABUS_PREF . 'cart', BRABUS_URL . '/assets/js/cart.js', [], BRABUS_VER, true );
 	wp_localize_script( BRABUS_PREF . 'cart', 'WppAjaxCart', [
 		'ajax_url'   => $ajax_url,
